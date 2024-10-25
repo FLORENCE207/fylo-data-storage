@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Fylo data storage component</title>
+
+  <style>
+
+    body{
+      box-sizing: border-box;
+    }
+    *,
+    *::before,
+    *::after{
+      box-sizing: inherit;
+    }
+    :root{
+      --Pale-blue: hsl(243, 100%, 93%);
+      --Grayish-blue: hsl(229, 7%, 55%);
+       --Dark-blue: hsl(228, 56%, 26%);
+      --Very-dark-blue: hsl(229, 57%, 11%);
+    }
+
+    body{
+      background-color: var(--Very-dark-blue);
+      color: var(--Pale-blue);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .container{
+      background: url(images/bg-desktop.png) no-repeat bottom;
+      background-position: absolute;
+      background-size: contain;
+      display: grid;
+      align-items: center;
+      grid-template-rows: minmax(250px, 1fr) 120px;
+      height: 100vh;
+      justify-content: stretch;
+      justify-items: center;
+      padding: 240x;
+      width: 100%;
+    }
+
+    .card{
+      display: grid;
+      gap: 24px;
+      justify-content: stretch;
+      align-items: end;
+      max-width: 960px;
+      grid-template-columns: 1fr 1.5fr;
+    }
+
+    .navigation{
+      background-color: var(--Dark-blue);
+      border-radius: 8px 80px 8px 8px;
+      padding: 36px;
+      display: grid;
+      grid-template-rows: 1fr 1fr ;
+      gap: 24px;
+      justify-content: stretch;
+      min-height: 175px;
+      min-width: 175px;
+
+    }
+
+    .navigation-bar{
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-items{
+      background-color: var(--Very-dark-blue);
+      border-radius: 6px;
+      box-shadow: none;
+      border: none;
+      height: 48px;
+      width: 48px;
+      padding: 12px;
+    }
+
+    .detailswrapper{
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .details-container{
+      background-color: var(--Dark-blue);
+      border-radius: 8px;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      min-height: 125px;
+      padding: 24px;
+      width: 100%;
+    }
+
+    .details-range{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .range-indicator-container{
+      background-color: var(--Very-dark-blue);
+      border-radius: 20px;
+      height: 20px;
+      margin: 12px 0;
+    }
+
+    .range-indicator{
+      background: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+      border-radius: 20px;
+      display: flex;
+      flex-direction: row-reverse;
+      height: 16px;
+      margin: 2px;
+      width: 81.5%;
+    }
+
+    .range-point{
+      background: var(--Pale-blue);
+      border-radius: 20px;
+      height: 14px;
+      width: 14px;
+      margin: 1px;
+
+    }
+
+    .details-remaining{
+      align-items: center;
+      background: var(--Pale-blue);
+      border-radius: 4px;
+      color: var(--Very-dark-blue);
+      display: flex;
+      gap: 4px;
+      justify-content: flex-end;
+      padding: 18px;
+      position: relative;
+      max-width: 165px;
+      align-self: flex-end;
+      right: 24px;
+      top: 24px;
+    }
+
+    .details-remaining span{
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .details-remaining::before{
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid var(--Pale-blue);
+      border-top: 10px solid var(--Pale-blue);
+      content: "";
+      position: absolute;
+      right: 0px;
+      top: 63px;
+
+    }
+
+    @media screen and (max-width: 619px){
+      .card{
+        align-items: stretch;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+
+      }
+    .container{
+      background: url(images/bg-mobile.png) no-repeat;
+      background-size: cover;
+      justify-items: stretch;
+      
+      }
+      .detailswrapper{
+        position: relative;
+        flex-direction: column-reverse;
+        
+      }
+      .details-remaining{
+        align-self: center;
+        position: absolute;
+        right: 150px;
+        top: 178px;
+      }
+      .details-remaining::before{
+        display: none;
+      }
+
+    }
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <main class="card">
+      <section class="navigation">
+        <img src="images/logo.svg" alt="logo">
+        <nav class="navigation-bar">
+          <button class="nav-items" name="document">
+            <img src="images/icon-document.svg" alt="document icon">
+          </button>
+          <button class="nav-items" name="folder">
+            <img src="images/icon-folder.svg" alt="folder icon">
+          </button>
+          <button class="nav-items" name="upload">
+            <img src="images/icon-upload.svg" alt="upload icon">
+          </button>
+        </nav>
+      </section>
+      <div class="detailswrapper">
+        <div class="details-remaining">
+          <span>185</span>GB Left
+        </div>
+        <section class="details-container">
+          <p>You’ve used <b>815 GB</b> of your storage</p>
+          <div class="range-indicator-container">
+            <div class="range-indicator">
+              <div class="range-point"  />
+            </div>
+          </div>
+          <div class="details-range">
+            <span>0 GB</span>
+            <span>1000 GB</span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Florence Chioma</a>.
+  </div>
+</body>
+</html>
